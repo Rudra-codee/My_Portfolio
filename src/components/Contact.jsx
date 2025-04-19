@@ -1,11 +1,11 @@
 import React, { useState, useEffect, useRef } from 'react';
-import galaxyVideo from '../assets/galaxy (1).mp4';
 import { motion, AnimatePresence } from 'framer-motion';
 import { TypeAnimation } from 'react-type-animation';
-import { FaMapMarkerAlt, FaEnvelope, FaClock, FaGithub, FaLinkedin, FaTwitter, FaInstagram, FaSun, FaMoon } from 'react-icons/fa';
+import { FaMapMarkerAlt, FaEnvelope, FaClock, FaGithub, FaLinkedin, FaInstagram, FaSun, FaMoon } from 'react-icons/fa';
 import ScrollAnimation from './ScrollAnimation';
 import emailjs from '@emailjs/browser';
 import { MdEmail } from 'react-icons/md';
+import CursorBalls from './CursorBalls';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -96,6 +96,7 @@ const Contact = () => {
         from_name: formData.name,
         from_email: formData.email,
         message: formData.message,
+        to_email: 'rudraksh969977@gmail.com'
       };
 
       await emailjs.send(
@@ -128,35 +129,20 @@ const Contact = () => {
   };
   
   const quickActions = [
-    { icon: <FaEnvelope />, label: 'Email', action: () => window.location.href = 'mailto:rudraksh.dev@gmail.com' },
+    { icon: <FaEnvelope />, label: 'Email', action: () => window.location.href = 'mailto:rudraksh969977@gmail.com' },
     { icon: <FaGithub />, label: 'GitHub', action: () => window.open('https://github.com/Rudra-codee', '_blank') },
-    { icon: <FaLinkedin />, label: 'LinkedIn', action: () => window.open('https://linkedin.com/in/rudraksh-dev', '_blank') },
+    { icon: <FaLinkedin />, label: 'LinkedIn', action: () => window.open('https://www.linkedin.com/in/rudraksh-rathod-5a891431a/', '_blank') },
     { icon: <FaMapMarkerAlt />, label: 'Location', action: () => window.open('https://maps.google.com/?q=Delhi+NCR,+India', '_blank') }
   ];
   
   return (
-    <section id="contact" className={`relative min-h-screen ${isDarkMode ? 'bg-[#0E1016]' : 'bg-gray-50'} py-20 transition-colors duration-500`}>
-      <div className="absolute inset-0 z-0 overflow-hidden">
-        <video
-          autoPlay
-          loop
-          muted
-          playsInline
-          className="w-full h-full object-cover opacity-50"
-        >
-          <source src={galaxyVideo} type="video/mp4" />
-        </video>
-        <div className={`absolute inset-0 bg-gradient-to-b ${
-          isDarkMode 
-            ? 'from-[#0E1016]/90 via-[#0E1016]/50 to-[#0E1016]/90' 
-            : 'from-white/90 via-white/50 to-white/90'
-        }`} />
-      </div>
+    <section id="contact" className={`relative min-h-screen ${isDarkMode ? 'bg-[#0E1016]' : 'bg-gray-50'} py-12 lg:py-20 transition-colors duration-500`}>
+      <CursorBalls />
       
       <div className="relative z-10">
         <div className="container mx-auto px-4">
-          <ScrollAnimation className="max-w-3xl mx-auto text-center mb-16">
-            <h2 className="text-6xl font-bold mb-6">
+          <ScrollAnimation className="max-w-3xl mx-auto text-center mb-8 lg:mb-16">
+            <h2 className="text-4xl lg:text-6xl font-bold mb-4 lg:mb-6">
               <TypeAnimation
                 sequence={[
                   'Get In Touch',
@@ -171,7 +157,7 @@ const Contact = () => {
                 }`}
               />
             </h2>
-            <p className={`text-lg max-w-2xl mx-auto ${
+            <p className={`text-base lg:text-lg max-w-2xl mx-auto ${
               isDarkMode ? 'text-gray-400' : 'text-gray-600'
             }`}>
               Have a project in mind or want to collaborate? Feel free to reach out!
@@ -179,20 +165,20 @@ const Contact = () => {
           </ScrollAnimation>
           
           <div className="max-w-4xl mx-auto" ref={formRef}>
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
               {/* Contact Information */}
               <ScrollAnimation delay={0.2}>
-                <div className="space-y-8">
+                <div className="space-y-6 lg:space-y-8">
                   <div className={`${
                     isDarkMode ? 'bg-[#1C1F2E]/40' : 'bg-white/80'
-                  } backdrop-blur-sm rounded-2xl border ${
+                  } backdrop-blur-sm rounded-xl lg:rounded-2xl border ${
                     isDarkMode ? 'border-[#2A2F42]/50' : 'border-gray-200'
-                  } p-8 hover:border-blue-500/30 transition-all duration-300 group`}>
-                    <h3 className={`text-2xl font-semibold mb-6 ${
+                  } p-6 lg:p-8 hover:border-blue-500/30 transition-all duration-300 group`}>
+                    <h3 className={`text-xl lg:text-2xl font-semibold mb-4 lg:mb-6 ${
                       isDarkMode ? 'text-white' : 'text-gray-800'
                     } group-hover:text-blue-400 transition-colors`}>Contact Information</h3>
                     
-                    <div className="space-y-6">
+                    <div className="space-y-4 lg:space-y-6">
                       <ScrollAnimation delay={0.2}>
                         <div className="flex items-start space-x-4 group/item">
                           <div className={`w-10 h-10 rounded-xl ${
@@ -206,8 +192,8 @@ const Contact = () => {
                             <h4 className={`${
                               isDarkMode ? 'text-white' : 'text-gray-800'
                             } font-medium group-hover/item:text-blue-400 transition-colors`}>Email</h4>
-                            <a href="mailto:rudraksh.dev@gmail.com" className="text-blue-400 hover:text-blue-300 transition-colors">
-                              rudraksh.dev@gmail.com
+                            <a href="mailto:rudraksh969977@gmail.com" className="text-blue-400 hover:text-blue-300 transition-colors">
+                              rudraksh969977@gmail.com
                             </a>
                           </div>
                         </div>
@@ -254,14 +240,14 @@ const Contact = () => {
                   <ScrollAnimation delay={0.8}>
                     <div className={`${
                       isDarkMode ? 'bg-[#1C1F2E]/40' : 'bg-white/80'
-                    } backdrop-blur-sm rounded-2xl border ${
+                    } backdrop-blur-sm rounded-xl lg:rounded-2xl border ${
                       isDarkMode ? 'border-[#2A2F42]/50' : 'border-gray-200'
-                    } p-8 hover:border-purple-500/30 transition-all duration-300 group`}>
-                      <h3 className={`text-2xl font-semibold mb-6 ${
+                    } p-6 lg:p-8 hover:border-purple-500/30 transition-all duration-300 group`}>
+                      <h3 className={`text-xl lg:text-2xl font-semibold mb-4 lg:mb-6 ${
                         isDarkMode ? 'text-white' : 'text-gray-800'
                       } group-hover:text-purple-400 transition-colors`}>Connect With Me</h3>
                       
-                      <div className="flex space-x-4">
+                      <div className="flex flex-wrap gap-3 lg:gap-4">
                         <ScrollAnimation delay={0.2}>
                           <motion.a 
                             whileHover={{ scale: 1.1 }}
@@ -282,7 +268,7 @@ const Contact = () => {
                           <motion.a 
                             whileHover={{ scale: 1.1 }}
                             whileTap={{ scale: 0.95 }}
-                            href="https://linkedin.com/in/rudraksh-dev" 
+                            href="https://www.linkedin.com/in/rudraksh-rathod-5a891431a/" 
                             target="_blank" 
                             rel="noopener noreferrer"
                             className={`w-12 h-12 rounded-xl ${
@@ -298,23 +284,25 @@ const Contact = () => {
                           <motion.a 
                             whileHover={{ scale: 1.1 }}
                             whileTap={{ scale: 0.95 }}
-                            href="https://twitter.com/rudraksh_dev" 
+                            href="https://leetcode.com/u/Rudraksh_Rathod/" 
                             target="_blank" 
                             rel="noopener noreferrer"
                             className={`w-12 h-12 rounded-xl ${
                               isDarkMode ? 'bg-[#2A2F42]/50' : 'bg-gray-100'
-                            } flex items-center justify-center hover:bg-blue-500/30 transition-all duration-300`}
+                            } flex items-center justify-center hover:bg-orange-500/30 transition-all duration-300`}
                           >
-                            <FaTwitter className={`w-6 h-6 ${
-                              isDarkMode ? 'text-white' : 'text-gray-800'
-                            }`} />
+                            <img 
+                              src="https://upload.wikimedia.org/wikipedia/commons/1/19/LeetCode_logo_black.png" 
+                              alt="LeetCode" 
+                              className={`w-6 h-6 ${isDarkMode ? 'invert' : ''}`}
+                            />
                           </motion.a>
                         </ScrollAnimation>
                         <ScrollAnimation delay={0.8}>
                           <motion.a 
                             whileHover={{ scale: 1.1 }}
                             whileTap={{ scale: 0.95 }}
-                            href="https://instagram.com/rudraksh.dev" 
+                            href="https://www.instagram.com/rudraksh_rathod7/" 
                             target="_blank" 
                             rel="noopener noreferrer"
                             className={`w-12 h-12 rounded-xl ${
@@ -336,31 +324,31 @@ const Contact = () => {
               <ScrollAnimation delay={0.4}>
                 <div className={`${
                   isDarkMode ? 'bg-[#1C1F2E]/40' : 'bg-white/80'
-                } backdrop-blur-sm rounded-2xl border ${
+                } backdrop-blur-sm rounded-xl lg:rounded-2xl border ${
                   isDarkMode ? 'border-[#2A2F42]/50' : 'border-gray-200'
-                } p-8`}>
+                } p-6 lg:p-8`}>
                   <div className="flex justify-between items-center mb-6">
-                    <h3 className={`text-2xl font-semibold ${
+                    <h3 className={`text-xl lg:text-2xl font-semibold ${
                       isDarkMode ? 'text-white' : 'text-gray-800'
                     }`}>Send Me a Message</h3>
                     <motion.button
                       whileHover={{ scale: 1.1 }}
                       whileTap={{ scale: 0.9 }}
                       onClick={toggleDarkMode}
-                      className={`w-10 h-10 rounded-full ${
+                      className={`w-8 h-8 lg:w-10 lg:h-10 rounded-full ${
                         isDarkMode ? 'bg-gray-800' : 'bg-gray-200'
                       } flex items-center justify-center transition-colors duration-300`}
                     >
                       {isDarkMode ? (
-                        <FaSun className="w-5 h-5 text-yellow-400" />
+                        <FaSun className="w-4 h-4 lg:w-5 lg:h-5 text-yellow-400" />
                       ) : (
-                        <FaMoon className="w-5 h-5 text-gray-600" />
+                        <FaMoon className="w-4 h-4 lg:w-5 lg:h-5 text-gray-600" />
                       )}
                     </motion.button>
                   </div>
                   
-                  <form onSubmit={handleSubmit} className="space-y-6">
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <form onSubmit={handleSubmit} className="space-y-4 lg:space-y-6">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 lg:gap-6">
                       <div className="relative">
                         <label 
                           htmlFor="name" 
@@ -673,25 +661,27 @@ const Contact = () => {
             initial={{ opacity: 0, y: 100 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 100 }}
-            className={`fixed bottom-8 right-8 z-50 ${
+            className={`fixed bottom-4 lg:bottom-8 left-4 lg:left-8 z-50 ${
               isDarkMode ? 'bg-[#1C1F2E]/90' : 'bg-white/90'
-            } backdrop-blur-lg rounded-2xl shadow-xl border ${
+            } backdrop-blur-lg rounded-xl lg:rounded-2xl shadow-xl border ${
               isDarkMode ? 'border-[#2A2F42]/50' : 'border-gray-200'
-            } p-4`}
+            } p-3 lg:p-4`}
           >
-            <div className="flex space-x-4">
+            <div className="flex space-x-3 lg:space-x-4">
               {quickActions.map((action, index) => (
                 <motion.button
                   key={index}
                   whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 0.9 }}
                   onClick={action.action}
-                  className={`w-10 h-10 rounded-xl ${
+                  className={`w-8 h-8 lg:w-10 lg:h-10 rounded-xl ${
                     isDarkMode ? 'bg-[#2A2F42]/50' : 'bg-gray-100'
                   } flex items-center justify-center hover:bg-blue-500/30 transition-all duration-300`}
                   title={action.label}
                 >
-                  {action.icon}
+                  {React.cloneElement(action.icon, {
+                    className: `w-4 h-4 lg:w-5 lg:h-5 ${isDarkMode ? 'text-gray-300' : 'text-gray-700'}`
+                  })}
                 </motion.button>
               ))}
             </div>

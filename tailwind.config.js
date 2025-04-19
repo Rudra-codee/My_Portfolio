@@ -45,6 +45,7 @@ export default {
       fontFamily: {
         sans: ["Sora", "sans-serif"],
         code: ["Source Code Pro", "monospace"],
+        mono: ["Roboto Mono", "monospace"],
       },
       fontSize: {
         xs: ["12px", "16px"],
@@ -104,6 +105,7 @@ export default {
         "drawLine": "drawLine 2s ease-out forwards",
         "pulse-glow": "pulse-glow 2s ease-in-out infinite",
         'twinkle': 'twinkle 3s ease-in-out infinite',
+        "spin-slow": "spin 8s linear infinite",
       },
       keyframes: {
         "slow-spin": {

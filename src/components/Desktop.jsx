@@ -87,13 +87,13 @@ const Desktop = () => {
             </div>
 
             {/* Desktop Content */}
-            <div className="grid grid-cols-12 gap-6 p-8">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 p-4 lg:p-8">
               {/* Project Explorer */}
-              <div className="col-span-4 bg-[#1C1F2E] rounded-xl overflow-hidden">
+              <div className="lg:col-span-4 bg-[#1C1F2E] rounded-xl overflow-hidden">
                 <div className="px-4 py-2 bg-[#2A2F42]/50 border-b border-[#2A2F42]">
                   <span className="text-gray-400">Project Explorer</span>
                 </div>
-                <div className="p-4 space-y-3">
+                <div className="p-4 space-y-3 max-h-[60vh] lg:max-h-[70vh] overflow-y-auto">
                   {projects.map((project) => (
                     <div
                       key={project.id}
@@ -105,25 +105,25 @@ const Desktop = () => {
                       }`}
                     >
                       <div className="flex items-center space-x-3">
-                        <svg className="w-5 h-5 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <svg className="w-5 h-5 text-blue-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                         </svg>
-                        <span className="text-gray-300 font-medium">{project.name}</span>
+                        <span className="text-gray-300 font-medium text-sm lg:text-base">{project.name}</span>
                       </div>
-                      <p className="text-blue-400/80 text-sm mt-2">{project.tech}</p>
+                      <p className="text-blue-400/80 text-xs lg:text-sm mt-2 line-clamp-1">{project.tech}</p>
                     </div>
                   ))}
                 </div>
               </div>
 
               {/* Project Preview */}
-              <div className="col-span-8 bg-[#1C1F2E] rounded-xl overflow-hidden">
+              <div className="lg:col-span-8 bg-[#1C1F2E] rounded-xl overflow-hidden">
                 <div className="px-4 py-2 bg-[#2A2F42]/50 border-b border-[#2A2F42]">
                   <span className="text-gray-400">Project Details</span>
                 </div>
-                <div className="p-6">
+                <div className="p-4 lg:p-6">
                   {activeProject ? (
-                    <div className="space-y-6">
+                    <div className="space-y-4 lg:space-y-6">
                       <div className="aspect-video rounded-xl bg-[#2A2F42]/30 overflow-hidden">
                         <img
                           src={activeProject.preview}
@@ -132,14 +132,14 @@ const Desktop = () => {
                         />
                       </div>
                       <div>
-                        <h3 className="text-2xl font-semibold text-white mb-3">{activeProject.name}</h3>
-                        <p className="text-gray-400 mb-6 leading-relaxed">{activeProject.description}</p>
-                        <div className="flex space-x-4">
+                        <h3 className="text-xl lg:text-2xl font-semibold text-white mb-2 lg:mb-3">{activeProject.name}</h3>
+                        <p className="text-gray-400 text-sm lg:text-base mb-4 lg:mb-6 leading-relaxed">{activeProject.description}</p>
+                        <div className="flex flex-col sm:flex-row gap-3">
                           <a
                             href={activeProject.live}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="px-6 py-3 rounded-xl bg-blue-500/20 text-blue-400 hover:bg-blue-500/30 transition-colors duration-300 flex items-center space-x-2"
+                            className="flex-1 px-4 py-2 lg:px-6 lg:py-3 rounded-xl bg-blue-500/20 text-blue-400 hover:bg-blue-500/30 transition-colors duration-300 flex items-center justify-center space-x-2 text-sm lg:text-base"
                           >
                             <span>Visit Site</span>
                             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -150,7 +150,7 @@ const Desktop = () => {
                             href={activeProject.github}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="px-6 py-3 rounded-xl bg-[#2A2F42]/50 text-gray-300 hover:bg-[#2A2F42]/70 transition-colors duration-300 flex items-center space-x-2"
+                            className="flex-1 px-4 py-2 lg:px-6 lg:py-3 rounded-xl bg-[#2A2F42]/50 text-gray-300 hover:bg-[#2A2F42]/70 transition-colors duration-300 flex items-center justify-center space-x-2 text-sm lg:text-base"
                           >
                             <span>View Code</span>
                             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -161,11 +161,11 @@ const Desktop = () => {
                       </div>
                     </div>
                   ) : (
-                    <div className="flex flex-col items-center justify-center h-64 text-gray-500 space-y-4">
-                      <svg className="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <div className="flex flex-col items-center justify-center h-48 lg:h-64 text-gray-500 space-y-4">
+                      <svg className="w-10 h-10 lg:w-12 lg:h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                       </svg>
-                      <p>Select a project to view details</p>
+                      <p className="text-sm lg:text-base">Select a project to view details</p>
                     </div>
                   )}
                 </div>
