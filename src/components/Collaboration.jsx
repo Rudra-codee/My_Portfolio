@@ -1,5 +1,4 @@
 import { check, github } from "../assets";
-import SplineDesign from "./SplineDesign";
 import { aboutContent, aboutText, techStack } from "../constants";
 import Button from "./Button";
 import Section from "./Section";
@@ -7,10 +6,7 @@ import { LeftCurve, RightCurve } from "./design/Collaboration";
 
 const Collaboration = () => {
   return (
-    <Section crosses>
-      <div className="w-full mb-12">
-        <SplineDesign />
-      </div>
+    <Section crosses id="about">
       <div className="container lg:flex">
         <div className="max-w-[25rem]">
           <h2 className="h2 mb-4 md:mb-8">
@@ -53,30 +49,34 @@ const Collaboration = () => {
               </div>
             </div>
 
-            <ul>
-              {techStack.map((tech, index) => (
-                <li
-                  key={tech.id}
-                  className={`absolute top-0 left-1/2 h-1/2 -ml-[1.6rem] origin-bottom rotate-${
-                    index * 45
-                  }`}
-                >
-                  <div
-                    className={`relative -top-[1.6rem] flex w-[3.2rem] h-[3.2rem] bg-n-7 border border-n-1/15 rounded-xl -rotate-${
-                      index * 45
-                    }`}
-                  >
-                    <img
-                      className="m-auto"
-                      width={tech.width}
-                      height={tech.height}
-                      alt={tech.title}
-                      src={tech.icon}
-                    />
-                  </div>
-                </li>
-              ))}
-            </ul>
+            <div className="absolute inset-0">
+              <ul className="relative w-full h-full animate-slow-spin">
+                {techStack.map((tech, index) => {
+                  const angle = (index * 360) / techStack.length;
+                  return (
+                    <li
+                      key={tech.id}
+                      className="absolute top-0 left-1/2 h-1/2 -ml-[1.6rem] origin-bottom"
+                      style={{
+                        transform: `rotate(${angle}deg)`
+                      }}
+                    >
+                      <div
+                        className="relative -top-[1.6rem] flex w-[3.2rem] h-[3.2rem] bg-n-7 border border-n-1/15 rounded-xl"
+                      >
+                        <img
+                          className="m-auto"
+                          width={tech.width}
+                          height={tech.height}
+                          alt={tech.title}
+                          src={tech.icon}
+                        />
+                      </div>
+                    </li>
+                  );
+                })}
+              </ul>
+            </div>
 
             <LeftCurve />
             <RightCurve />

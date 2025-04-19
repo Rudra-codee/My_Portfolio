@@ -1,5 +1,4 @@
 import Spline from '@splinetool/react-spline';
-import ChatBot from './ChatBot';
 
 export default function SplineDesign() {
   return (
@@ -7,7 +6,7 @@ export default function SplineDesign() {
       <Spline
         scene="https://prod.spline.design/95sByYJ5StWWWtXc/scene.splinecode" 
       />
-      <ChatBot />
+      <div className="absolute bottom-3 right-3 w-44 h-12 bg-black rounded-lg z-10" />
     </div>
   );
 }

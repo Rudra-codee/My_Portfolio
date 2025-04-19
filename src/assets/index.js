@@ -81,6 +81,17 @@ import react from "./react.svg";
 import typescript from "./typescript.svg";
 import javascript from "./javascript.svg";
 import tailwind from "./tailwind.svg";
+import skill2 from "./skill2.svg";
+import skill3 from "./skill3.png";
+import skill4 from "./skill4.svg";
+import skill5 from "./skill5.svg";
+import skill6 from "./skill6.svg";
+import skill7 from "./skill7.svg";
+import skill8 from "./skill8.svg";
+import skill9 from "./skill9.svg";
+import skill10 from "./skill10.svg";
+import skill11 from "./skill11.png";
+import skill12 from "./skill12.png";
 
 export {
   brainwave,
@@ -158,4 +169,15 @@ export {
   typescript,
   javascript,
   tailwind,
+  skill2,
+  skill3,
+  skill4,
+  skill5,
+  skill6,
+  skill7,
+  skill8,
+  skill9,
+  skill10,
+  skill11,
+  skill12,
 };

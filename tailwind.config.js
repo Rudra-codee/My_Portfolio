@@ -6,6 +6,18 @@ export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
+      perspective: {
+        '1000': '1000px',
+      },
+      transformStyle: {
+        '3d': 'preserve-3d',
+      },
+      rotate: {
+        'y-180': 'rotateY(180deg)',
+      },
+      backfaceVisibility: {
+        'hidden': 'hidden',
+      },
       colors: {
         color: {
           1: "#AC6AFF",
@@ -26,18 +38,27 @@ export default {
           5: "#3F3A52",
           6: "#252134",
           7: "#15131D",
-          8: "#0E0C15",
-          9: "#474060",
-          10: "#43435C",
-          11: "#1B1B2E",
-          12: "#2E2A41",
-          13: "#6C7275",
+          8: "#0C0A13",
+          9: "#040406",
         },
       },
       fontFamily: {
-        sans: ["var(--font-sora)", ...fontFamily.sans],
-        code: "var(--font-code)",
-        grotesk: "var(--font-grotesk)",
+        sans: ["Sora", "sans-serif"],
+        code: ["Source Code Pro", "monospace"],
+      },
+      fontSize: {
+        xs: ["12px", "16px"],
+        sm: ["14px", "20px"],
+        base: ["16px", "24px"],
+        lg: ["18px", "28px"],
+        xl: ["20px", "28px"],
+        "2xl": ["24px", "32px"],
+        "3xl": ["32px", "40px"],
+        "4xl": ["40px", "48px"],
+        "5xl": ["48px", "56px"],
+        "6xl": ["64px", "72px"],
+        "7xl": ["72px", "80px"],
+        "8xl": ["96px", "106px"],
       },
       letterSpacing: {
         tagline: ".15em",
@@ -64,12 +85,55 @@ export default {
         5: "5",
       },
       borderWidth: {
-        DEFAULT: "0.0625rem",
+        DEFAULT: "1px",
+        0: "0",
+        2: "2px",
+        4: "4px",
+        8: "8px",
       },
       backgroundImage: {
         "radial-gradient": "radial-gradient(var(--tw-gradient-stops))",
         "conic-gradient":
           "conic-gradient(from 225deg, #FFC876, #79FFF7, #9F53FF, #FF98E2, #FFC876)",
+      },
+      animation: {
+        "slow-spin": "slow-spin 20s linear infinite",
+        "slideUp": "slideUp 0.3s ease-out",
+        "slideIn": "slideIn 0.3s ease-out",
+        "fadeIn": "fadeIn 0.3s ease-out",
+        "drawLine": "drawLine 2s ease-out forwards",
+        "pulse-glow": "pulse-glow 2s ease-in-out infinite",
+        'twinkle': 'twinkle 3s ease-in-out infinite',
+      },
+      keyframes: {
+        "slow-spin": {
+          "0%": { transform: "rotate(0deg)" },
+          "100%": { transform: "rotate(360deg)" },
+        },
+        slideUp: {
+          "0%": { transform: "translateY(100%)", opacity: 0 },
+          "100%": { transform: "translateY(0)", opacity: 1 },
+        },
+        slideIn: {
+          "0%": { transform: "translateY(10px)", opacity: 0 },
+          "100%": { transform: "translateY(0)", opacity: 1 },
+        },
+        fadeIn: {
+          "0%": { opacity: 0 },
+          "100%": { opacity: 1 },
+        },
+        drawLine: {
+          "0%": { strokeDashoffset: "100%" },
+          "100%": { strokeDashoffset: "0%" },
+        },
+        "pulse-glow": {
+          "0%, 100%": { opacity: 0.4 },
+          "50%": { opacity: 1 },
+        },
+        twinkle: {
+          '0%, 100%': { opacity: 0.2 },
+          '50%': { opacity: 1 },
+        },
       },
     },
   },
@@ -112,8 +176,7 @@ export default {
           "@apply text-sm": {},
         },
         ".tagline": {
-          "@apply font-grotesk font-light text-xs tracking-tagline uppercase":
-            {},
+          "@apply font-sans font-light text-xs tracking-tagline uppercase": {},
         },
         ".quote": {
           "@apply font-code text-lg leading-normal": {},
