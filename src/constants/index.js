@@ -64,6 +64,11 @@ export const navigation = [
   },
   {
     id: "4",
+    title: "Resume",
+    url: "#resume",
+  },
+  {
+    id: "5",
     title: "Contact",
     url: "#contact",
   },
