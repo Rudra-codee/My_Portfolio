@@ -16,8 +16,7 @@ const Skills = () => {
   const [activeSkill, setActiveSkill] = useState(null);
   const [isVisible, setIsVisible] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [isAnimating, setIsAnimating] = useState(false);
-  const [hoveredIndex, setHoveredIndex] = useState(null);
+  const [isAnimating, setIsAnimating] = useState(false); 
   const [isPaused, setIsPaused] = useState(false);
   const [activeCategory, setActiveCategory] = useState('All');
   const autoScrollRef = useRef(null);

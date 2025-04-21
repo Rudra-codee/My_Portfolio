@@ -5,6 +5,7 @@ import { AnimatePresence } from "framer-motion";
 import ButtonGradient from "./assets/svg/ButtonGradient";
 import Header from "./components/Header";
 import Hero from "./components/Hero";
+import Collaboration from "./components/Collaboration";
 import Skills from "./components/Skills";
 import Desktop from "./components/Desktop";
 import Contact from "./components/Contact";
@@ -12,7 +13,11 @@ import ScrollAnimation from "./components/ScrollAnimation";
 import MouseEffect from "./components/MouseEffect";
 import Loader from "./components/Loader";
 import Resume from './components/Resume';
+<<<<<<< HEAD
 import Collabration from "./components/Collabration;
+=======
+import ChatBot from "./components/ChatBot";
+>>>>>>> ea718f8 (Remove broken submodule)
 
 const App = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -31,7 +36,11 @@ const App = () => {
                 <>
                   <Hero />
                   <ScrollAnimation>
+<<<<<<< HEAD
                     <Collabration />
+=======
+                    <Collaboration />
+>>>>>>> ea718f8 (Remove broken submodule)
                   </ScrollAnimation>
                   <ScrollAnimation>
                     <Skills />
@@ -47,6 +56,7 @@ const App = () => {
               <Route path="/resume" element={<Resume />} />
             </Routes>
             <ButtonGradient />
+            <ChatBot />
           </>
         )}
       </AnimatePresence>
