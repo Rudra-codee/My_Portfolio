@@ -1,0 +1,59 @@
+.mood-trend-section {
+  background: white;
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  margin: 20px 0;
+}
+
+.mood-trend-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.mood-trend-title {
+  font-size: 1.5rem;
+  color: #2d3748;
+  font-weight: 600;
+}
+
+.mood-trend-indicator {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.trend-up {
+  color: #48bb78;
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+
+.trend-label {
+  color: #718096;
+  font-size: 0.9rem;
+}
+
+.mood-trend-chart {
+  height: 300px;
+  position: relative;
+}
+
+/* Dark mode styles */
+.dark-mode .mood-trend-section {
+  background-color: #2d3748;
+}
+
+.dark-mode .mood-trend-title {
+  color: #f7fafc;
+}
+
+.dark-mode .trend-label {
+  color: #a0aec0;
+}
+
+.dark-mode .mood-trend-chart canvas {
+  filter: brightness(0.9);
+} 
