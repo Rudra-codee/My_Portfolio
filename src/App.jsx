@@ -12,6 +12,7 @@ import ScrollAnimation from "./components/ScrollAnimation";
 import MouseEffect from "./components/MouseEffect";
 import Loader from "./components/Loader";
 import Resume from './components/Resume';
+import Collabration from "./components/Collabration;
 
 const App = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -29,6 +30,9 @@ const App = () => {
               <Route path="/" element={
                 <>
                   <Hero />
+                  <ScrollAnimation>
+                    <Collabration />
+                  </ScrollAnimation>
                   <ScrollAnimation>
                     <Skills />
                   </ScrollAnimation>
