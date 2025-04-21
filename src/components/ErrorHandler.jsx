@@ -3,7 +3,6 @@ import { motion, AnimatePresence } from 'framer-motion';
 
 const ErrorHandler = () => {
   const [showError, setShowError] = useState(false);
-  const [isSeriousError, setIsSeriousError] = useState(false);
 
   useEffect(() => {
     const originalError = console.error;
@@ -17,15 +16,14 @@ const ErrorHandler = () => {
                        errorMessage.includes('TypeError') ||
                        errorMessage.includes('ReferenceError');
       
-      setIsSeriousError(isSerious);
-      setShowError(true);
+      if (isSerious) {
+        setShowError(true);
+      }
     };
 
+    // Keep original warning behavior but don't show notifications
     console.warn = (...args) => {
       originalWarn.apply(console, args);
-      // Warnings are not considered serious
-      setIsSeriousError(false);
-      setShowError(true);
     };
 
     return () => {
@@ -48,22 +46,16 @@ const ErrorHandler = () => {
           className="fixed bottom-4 right-4 z-50"
         >
           <div className="bg-n-8 border border-n-6 rounded-lg p-4 shadow-lg max-w-sm">
-            <h3 className="text-n-1 font-bold mb-2">
-              {isSeriousError ? "Critical Error" : "Warning"}
-            </h3>
+            <h3 className="text-n-1 font-bold mb-2">Critical Error</h3>
             <p className="text-n-2 mb-4">
-              {isSeriousError 
-                ? "A critical error occurred. Please reload the page."
-                : "A minor issue was detected. You can continue using the site."}
+              A critical error occurred. Please reload the page.
             </p>
-            {isSeriousError && (
-              <button
-                onClick={handleReload}
-                className="w-full bg-n-6 hover:bg-n-5 text-n-1 font-mono py-2 px-4 rounded transition-colors"
-              >
-                Reload Page
-              </button>
-            )}
+            <button
+              onClick={handleReload}
+              className="w-full bg-n-6 hover:bg-n-5 text-n-1 font-mono py-2 px-4 rounded transition-colors"
+            >
+              Reload Page
+            </button>
           </div>
         </motion.div>
       )}
