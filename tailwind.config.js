@@ -104,8 +104,11 @@ export default {
         "fadeIn": "fadeIn 0.3s ease-out",
         "drawLine": "drawLine 2s ease-out forwards",
         "pulse-glow": "pulse-glow 2s ease-in-out infinite",
-        'twinkle': 'twinkle 3s ease-in-out infinite',
+        "twinkle": "twinkle 3s ease-in-out infinite",
         "spin-slow": "spin 8s linear infinite",
+        "float": "float 3s ease-in-out infinite",
+        "gradient": "gradient 15s ease infinite",
+        "shimmer": "shimmer 2s linear infinite"
       },
       keyframes: {
         "slow-spin": {
@@ -133,9 +136,29 @@ export default {
           "50%": { opacity: 1 },
         },
         twinkle: {
-          '0%, 100%': { opacity: 0.2 },
-          '50%': { opacity: 1 },
+          "0%, 100%": { opacity: 0.2 },
+          "50%": { opacity: 1 },
         },
+        float: {
+          "0%, 100%": { transform: "translateY(0)" },
+          "50%": { transform: "translateY(-20px)" }
+        },
+        gradient: {
+          "0%, 100%": {
+            "background-position": "0% 50%"
+          },
+          "50%": {
+            "background-position": "100% 50%"
+          }
+        },
+        shimmer: {
+          "0%": {
+            "background-position": "200% 0"
+          },
+          "100%": {
+            "background-position": "-200% 0"
+          }
+        }
       },
     },
   },
