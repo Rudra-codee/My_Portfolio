@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback, memo } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { useState } from "react";
 import { AnimatePresence } from "framer-motion";
@@ -16,41 +16,56 @@ import Resume from './components/Resume';
 import ChatBot from "./components/ChatBot";
 import ErrorHandler from "./components/ErrorHandler";
 
+// Memoized components to prevent unnecessary re-renders
+const MemoizedHeader = memo(Header);
+const MemoizedHero = memo(Hero);
+const MemoizedCollaboration = memo(Collaboration);
+const MemoizedSkills = memo(Skills);
+const MemoizedDesktop = memo(Desktop);
+const MemoizedContact = memo(Contact);
+const MemoizedResume = memo(Resume);
+const MemoizedChatBot = memo(ChatBot);
+const MemoizedErrorHandler = memo(ErrorHandler);
+
 const App = () => {
   const [isLoading, setIsLoading] = useState(true);
+
+  const handleLoadingComplete = useCallback(() => {
+    setIsLoading(false);
+  }, []);
 
   return (
     <div className="pt-[4.75rem] lg:pt-[5.25rem] overflow-hidden">
       <MouseEffect />
-      <ErrorHandler />
+      <MemoizedErrorHandler />
       <AnimatePresence mode="wait">
         {isLoading ? (
-          <Loader onLoadingComplete={() => setIsLoading(false)} />
+          <Loader onLoadingComplete={handleLoadingComplete} />
         ) : (
           <>
-            <Header />
+            <MemoizedHeader />
             <Routes>
               <Route path="/" element={
                 <>
-                  <Hero />
+                  <MemoizedHero />
                   <ScrollAnimation>
-                    <Collaboration />
+                    <MemoizedCollaboration />
                   </ScrollAnimation>
                   <ScrollAnimation>
-                    <Skills />
+                    <MemoizedSkills />
                   </ScrollAnimation>
                   <ScrollAnimation delay={0.4}>
-                    <Desktop />
+                    <MemoizedDesktop />
                   </ScrollAnimation>
                   <ScrollAnimation delay={0.5}>
-                    <Contact />
+                    <MemoizedContact />
                   </ScrollAnimation>
                 </>
               } />
-              <Route path="/resume" element={<Resume />} />
+              <Route path="/resume" element={<MemoizedResume />} />
             </Routes>
             <ButtonGradient />
-            <ChatBot />
+            <MemoizedChatBot />
           </>
         )}
       </AnimatePresence>

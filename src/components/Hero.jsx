@@ -1,4 +1,4 @@
-import { useRef, useEffect, useState, useMemo } from "react";
+import { useRef, useEffect, useState, useCallback } from "react";
 import { motion, useScroll, useTransform, useMotionValue, useSpring } from "framer-motion";
 import Section from "./Section";
 import { Button } from "./design/Button";
@@ -10,40 +10,34 @@ const Hero = () => {
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
   
-  // Initialize particles with pre-calculated values
-  const [particles, setParticles] = useState(() => 
-    Array.from({ length: 30 }, (_, i) => {
-      const size = Math.random() * 4 + 1;
-      const baseOpacity = 0.2 + (size / 5) * 0.3;
-      return {
-        id: i,
-        x: Math.random() * 100,
-        y: Math.random() * 100,
-        size,
-        speed: Math.random() * 1 + 0.5,
-        opacity: baseOpacity,
-        opacityValues: [baseOpacity, baseOpacity + 0.3, baseOpacity],
-      };
-    })
+  // Optimized particle state with reduced count and simplified properties
+  const [particles] = useState(() => 
+    Array.from({ length: 15 }, (_, i) => ({
+      id: i,
+      x: Math.random() * 100,
+      y: Math.random() * 100,
+      size: Math.random() * 2 + 1,
+      speed: Math.random() * 0.3 + 0.1,
+    }))
   );
 
-  // Mouse parallax effect
-  const handleMouseMove = (event) => {
+  // Memoized mouse move handler
+  const handleMouseMove = useCallback((event) => {
     const { clientX, clientY } = event;
     const { innerWidth, innerHeight } = window;
     const x = (clientX / innerWidth - 0.5) * 2;
     const y = (clientY / innerHeight - 0.5) * 2;
-    mouseX.set(x * 20);
-    mouseY.set(y * 20);
-  };
+    mouseX.set(x * 15); // Reduced movement range
+    mouseY.set(y * 15);
+  }, []);
 
   useEffect(() => {
     window.addEventListener("mousemove", handleMouseMove);
     return () => window.removeEventListener("mousemove", handleMouseMove);
-  }, []);
+  }, [handleMouseMove]);
 
-  // Smooth spring animations for mouse movement
-  const springConfig = { damping: 15, stiffness: 150 };
+  // Optimized spring animations
+  const springConfig = { damping: 20, stiffness: 100 }; // Adjusted for better performance
   const rotateX = useSpring(useMotionValue(0), springConfig);
   const rotateY = useSpring(useMotionValue(0), springConfig);
 
@@ -60,24 +54,7 @@ const Hero = () => {
     };
   }, []);
 
-  // Optimized particle animation
-  useEffect(() => {
-    let lastTime = performance.now();
-    const interval = setInterval(() => {
-      const currentTime = performance.now();
-      const deltaTime = currentTime - lastTime;
-      lastTime = currentTime;
-      
-      setParticles(prevParticles => 
-        prevParticles.map(particle => ({
-          ...particle,
-          y: (particle.y - (particle.speed * deltaTime / 16)) % 100,
-        }))
-      );
-    }, 100);
-    return () => clearInterval(interval);
-  }, []);
-
+  // Optimized scroll animations
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start start", "end start"],
@@ -87,7 +64,7 @@ const Hero = () => {
   const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
   const scale = useTransform(scrollYProgress, [0, 0.5], [1, 0.8]);
 
-  // Typing animation text
+  // Optimized typing animation
   const roles = ["Frontend Developer", "UI/UX Designer", "Problem Solver"];
   const [currentRole, setCurrentRole] = useState(0);
   const [isDeleting, setIsDeleting] = useState(false);
@@ -101,7 +78,7 @@ const Hero = () => {
     return () => clearInterval(ticker);
   }, [text, currentRole, isDeleting]);
 
-  const tick = () => {
+  const tick = useCallback(() => {
     let role = roles[currentRole];
     let updatedText = isDeleting 
       ? text.substring(0, text.length - 1)
@@ -117,7 +94,7 @@ const Hero = () => {
       setCurrentRole((prev) => (prev + 1) % roles.length);
       setDelta(150);
     }
-  };
+  }, [text, currentRole, isDeleting]);
 
   return (
     <Section
@@ -127,7 +104,7 @@ const Hero = () => {
       id="hero"
       ref={containerRef}
     >
-      {/* Particle Background */}
+      {/* Optimized Particle Background */}
       <div className="absolute inset-0 overflow-hidden">
         {particles.map((particle) => (
           <motion.div
@@ -137,15 +114,16 @@ const Hero = () => {
               transform: `translate(${particle.x}%, ${particle.y}%)`,
               width: particle.size,
               height: particle.size,
-              opacity: particle.opacity,
+              opacity: 0.2,
             }}
             animate={{
-              opacity: particle.opacityValues,
+              y: [particle.y, particle.y - 100],
+              opacity: [0.2, 0.3, 0.2],
             }}
             transition={{
-              duration: 2 + particle.size,
+              duration: 4 + particle.speed,
               repeat: Infinity,
-              ease: "easeInOut",
+              ease: "linear",
             }}
           />
         ))}
