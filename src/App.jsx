@@ -13,11 +13,7 @@ import ScrollAnimation from "./components/ScrollAnimation";
 import MouseEffect from "./components/MouseEffect";
 import Loader from "./components/Loader";
 import Resume from './components/Resume';
-<<<<<<< HEAD
-import Collabration from "./components/Collabration;
-=======
 import ChatBot from "./components/ChatBot";
->>>>>>> ea718f8 (Remove broken submodule)
 
 const App = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -36,11 +32,7 @@ const App = () => {
                 <>
                   <Hero />
                   <ScrollAnimation>
-<<<<<<< HEAD
-                    <Collabration />
-=======
                     <Collaboration />
->>>>>>> ea718f8 (Remove broken submodule)
                   </ScrollAnimation>
                   <ScrollAnimation>
                     <Skills />
