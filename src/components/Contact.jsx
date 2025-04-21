@@ -5,7 +5,6 @@ import { FaMapMarkerAlt, FaEnvelope, FaClock, FaGithub, FaLinkedin, FaInstagram,
 import ScrollAnimation from './ScrollAnimation';
 import emailjs from '@emailjs/browser';
 import { MdEmail } from 'react-icons/md';
-import CursorBalls from './CursorBalls';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -137,7 +136,6 @@ const Contact = () => {
   
   return (
     <section id="contact" className={`relative min-h-screen ${isDarkMode ? 'bg-[#0E1016]' : 'bg-gray-50'} py-12 lg:py-20 transition-colors duration-500`}>
-      <CursorBalls />
       
       <div className="relative z-10">
         <div className="container mx-auto px-4">
