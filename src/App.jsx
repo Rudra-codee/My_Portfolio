@@ -14,6 +14,7 @@ import MouseEffect from "./components/MouseEffect";
 import Loader from "./components/Loader";
 import Resume from './components/Resume';
 import ChatBot from "./components/ChatBot";
+import ErrorHandler from "./components/ErrorHandler";
 
 const App = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -21,6 +22,7 @@ const App = () => {
   return (
     <div className="pt-[4.75rem] lg:pt-[5.25rem] overflow-hidden">
       <MouseEffect />
+      <ErrorHandler />
       <AnimatePresence mode="wait">
         {isLoading ? (
           <Loader onLoadingComplete={() => setIsLoading(false)} />
