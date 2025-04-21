@@ -1,4 +1,4 @@
-import { useRef, useEffect, useState } from "react";
+import { useRef, useEffect, useState, useMemo } from "react";
 import { motion, useScroll, useTransform, useMotionValue, useSpring } from "framer-motion";
 import Section from "./Section";
 import { Button } from "./design/Button";
@@ -10,13 +10,22 @@ const Hero = () => {
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
   
-  const [particles, setParticles] = useState(Array.from({ length: 50 }, (_, i) => ({
-    id: i,
-    x: Math.random() * 100,
-    y: Math.random() * 100,
-    size: Math.random() * 4 + 1,
-    speed: Math.random() * 1 + 0.5,
-  })));
+  // Initialize particles with pre-calculated values
+  const [particles, setParticles] = useState(() => 
+    Array.from({ length: 30 }, (_, i) => {
+      const size = Math.random() * 4 + 1;
+      const baseOpacity = 0.2 + (size / 5) * 0.3;
+      return {
+        id: i,
+        x: Math.random() * 100,
+        y: Math.random() * 100,
+        size,
+        speed: Math.random() * 1 + 0.5,
+        opacity: baseOpacity,
+        opacityValues: [baseOpacity, baseOpacity + 0.3, baseOpacity],
+      };
+    })
+  );
 
   // Mouse parallax effect
   const handleMouseMove = (event) => {
@@ -51,16 +60,21 @@ const Hero = () => {
     };
   }, []);
 
-  // Particle animation
+  // Optimized particle animation
   useEffect(() => {
+    let lastTime = performance.now();
     const interval = setInterval(() => {
+      const currentTime = performance.now();
+      const deltaTime = currentTime - lastTime;
+      lastTime = currentTime;
+      
       setParticles(prevParticles => 
         prevParticles.map(particle => ({
           ...particle,
-          y: (particle.y - particle.speed) % 100,
+          y: (particle.y - (particle.speed * deltaTime / 16)) % 100,
         }))
       );
-    }, 50);
+    }, 100);
     return () => clearInterval(interval);
   }, []);
 
@@ -120,14 +134,13 @@ const Hero = () => {
             key={particle.id}
             className="absolute w-1 h-1 bg-n-1"
             style={{
-              x: `${particle.x}%`,
-              y: `${particle.y}%`,
+              transform: `translate(${particle.x}%, ${particle.y}%)`,
               width: particle.size,
               height: particle.size,
-              opacity: 0.2 + (particle.size / 5) * 0.3,
+              opacity: particle.opacity,
             }}
             animate={{
-              opacity: [0.2 + (particle.size / 5) * 0.3, 0.5 + (particle.size / 5) * 0.3, 0.2 + (particle.size / 5) * 0.3],
+              opacity: particle.opacityValues,
             }}
             transition={{
               duration: 2 + particle.size,
@@ -289,9 +302,11 @@ const Hero = () => {
             transition={{ duration: 0.5, delay: 1 }}
           >
             <Button 
-              href="#work" 
+              href="https://www.canva.com/design/DAGlQ_Gk3ac/3prgifTQqhjnTMH45mlopg/view?utm_content=DAGlQ_Gk3ac&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h23b5184f7e" 
               white 
               className="font-mono tracking-wider text-base relative overflow-hidden group"
+              target="_blank"
+              rel="noopener noreferrer"
             >
               <motion.span
                 className="relative z-10 inline-block"
