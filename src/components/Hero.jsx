@@ -5,21 +5,19 @@ import { Button } from "./design/Button";
 import robotImage from "../assets/hero/robot.jpeg";
 
 const Hero = () => {
-  const parallaxRef = useRef(null);
   const containerRef = useRef(null);
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
   
-  // Optimized particle state with reduced count and simplified properties
-  const [particles] = useState(() => 
-    Array.from({ length: 15 }, (_, i) => ({
-      id: i,
-      x: Math.random() * 100,
-      y: Math.random() * 100,
-      size: Math.random() * 2 + 1,
-      speed: Math.random() * 0.3 + 0.1,
-    }))
-  );
+  // Simplified particle state with static values
+  const particles = Array.from({ length: 10 }, (_, i) => ({
+    id: i,
+    x: Math.random() * 100,
+    y: Math.random() * 100,
+    size: Math.random() * 2 + 1,
+    speed: Math.random() * 0.3 + 0.1,
+    opacity: 0.2,
+  }));
 
   // Memoized mouse move handler
   const handleMouseMove = useCallback((event) => {
@@ -27,7 +25,7 @@ const Hero = () => {
     const { innerWidth, innerHeight } = window;
     const x = (clientX / innerWidth - 0.5) * 2;
     const y = (clientY / innerHeight - 0.5) * 2;
-    mouseX.set(x * 15); // Reduced movement range
+    mouseX.set(x * 15);
     mouseY.set(y * 15);
   }, []);
 
@@ -36,16 +34,16 @@ const Hero = () => {
     return () => window.removeEventListener("mousemove", handleMouseMove);
   }, [handleMouseMove]);
 
-  // Optimized spring animations
-  const springConfig = { damping: 20, stiffness: 100 }; // Adjusted for better performance
-  const rotateX = useSpring(useMotionValue(0), springConfig);
-  const rotateY = useSpring(useMotionValue(0), springConfig);
+  // Simplified spring animations
+  const springConfig = { damping: 20, stiffness: 100 };
+  const rotateX = useSpring(0, springConfig);
+  const rotateY = useSpring(0, springConfig);
 
   useEffect(() => {
-    const unsubscribeX = mouseX.onChange((latest) => {
+    const unsubscribeX = mouseX.on("change", (latest) => {
       rotateY.set(latest);
     });
-    const unsubscribeY = mouseY.onChange((latest) => {
+    const unsubscribeY = mouseY.on("change", (latest) => {
       rotateX.set(-latest);
     });
     return () => {
@@ -58,13 +56,14 @@ const Hero = () => {
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start start", "end start"],
+    layoutEffect: false,
   });
 
   const y = useTransform(scrollYProgress, [0, 1], ["0%", "50%"]);
   const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
   const scale = useTransform(scrollYProgress, [0, 0.5], [1, 0.8]);
 
-  // Optimized typing animation
+  // Typing animation
   const roles = ["Frontend Developer", "UI/UX Designer", "Problem Solver"];
   const [currentRole, setCurrentRole] = useState(0);
   const [isDeleting, setIsDeleting] = useState(false);
@@ -104,7 +103,7 @@ const Hero = () => {
       id="hero"
       ref={containerRef}
     >
-      {/* Optimized Particle Background */}
+      {/* Simplified Particle Background */}
       <div className="absolute inset-0 overflow-hidden">
         {particles.map((particle) => (
           <motion.div
@@ -114,14 +113,14 @@ const Hero = () => {
               transform: `translate(${particle.x}%, ${particle.y}%)`,
               width: particle.size,
               height: particle.size,
-              opacity: 0.2,
+              opacity: particle.opacity,
             }}
             animate={{
               y: [particle.y, particle.y - 100],
               opacity: [0.2, 0.3, 0.2],
             }}
             transition={{
-              duration: 4 + particle.speed,
+              duration: 4,
               repeat: Infinity,
               ease: "linear",
             }}

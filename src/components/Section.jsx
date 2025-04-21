@@ -1,15 +1,18 @@
+import React, { forwardRef } from 'react';
+import { motion } from 'framer-motion';
 import SectionSvg from "../assets/svg/SectionSvg";
 
-const Section = ({
+const Section = forwardRef(({
   className,
   id,
   crosses,
   crossesOffset,
   customPaddings,
   children,
-}) => {
+}, ref) => {
   return (
-    <div
+    <section
+      ref={ref}
       id={id}
       className={`
       relative 
@@ -34,8 +37,10 @@ const Section = ({
           <SectionSvg crossesOffset={crossesOffset} />
         </>
       )}
-    </div>
+    </section>
   );
-};
+});
+
+Section.displayName = 'Section';
 
 export default Section;
