@@ -302,7 +302,7 @@ const Hero = () => {
             transition={{ duration: 0.5, delay: 1 }}
           >
             <Button 
-              href="https://www.canva.com/design/DAGlQ_Gk3ac/3prgifTQqhjnTMH45mlopg/view?utm_content=DAGlQ_Gk3ac&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h23b5184f7e" 
+              href="https://www.canva.com/design/DAGdZ61TyAQ/Si6ZdQuLjDWudBjE-_i_LQ/view?utm_content=DAGdZ61TyAQ&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h65dca02bb4" 
               white 
               className="font-mono tracking-wider text-base relative overflow-hidden group"
               target="_blank"
