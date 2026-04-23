@@ -39,6 +39,16 @@ import {
   skill8,
   skill11,
   skill12,
+<<<<<<< HEAD
+=======
+  nextjs,
+  nodejs,
+  expressjs,
+  mongodb,
+  postgresql,
+  prisma,
+  redis,
+>>>>>>> b70f769 (added new Skills & Projects)
 } from "../assets";
 
 export const navigation = [
@@ -141,6 +151,7 @@ export const aboutContent = [
   },
   {
     id: "1",
+<<<<<<< HEAD
     title: "Frontend Focus",
     text: "Specializing in React, TypeScript, and responsive design",
   },
@@ -148,6 +159,20 @@ export const aboutContent = [
     id: "2",
     title: "Full-stack Capable",
     text: "Experience with backend technologies and database systems",
+=======
+    title: "Full-Stack Engineer",
+    text: "Building end-to-end products with React, Next.js, Node.js, Express, PostgreSQL, MongoDB and Prisma",
+  },
+  {
+    id: "2",
+    title: "AI / ML Builder",
+    text: "Developing RAG pipelines, LLM integrations, agentic systems and ML models with real-world deployment",
+  },
+  {
+    id: "3",
+    title: "Data Visualization",
+    text: "Visualizing insights with Tableau, Power BI and Excel — turning raw data into decisions",
+>>>>>>> b70f769 (added new Skills & Projects)
   },
 ];
 
@@ -228,6 +253,58 @@ export const techStack = [
     icon: skill12,
     width: 36,
     height: 36,
+<<<<<<< HEAD
+=======
+  },
+  {
+    id: "11",
+    title: "Next.js",
+    icon: nextjs,
+    width: 36,
+    height: 36,
+  },
+  {
+    id: "12",
+    title: "Node.js",
+    icon: nodejs,
+    width: 36,
+    height: 36,
+  },
+  {
+    id: "13",
+    title: "Express.js",
+    icon: expressjs,
+    width: 36,
+    height: 36,
+  },
+  {
+    id: "14",
+    title: "MongoDB",
+    icon: mongodb,
+    width: 36,
+    height: 36,
+  },
+  {
+    id: "15",
+    title: "PostgreSQL",
+    icon: postgresql,
+    width: 36,
+    height: 36,
+  },
+  {
+    id: "16",
+    title: "Prisma",
+    icon: prisma,
+    width: 36,
+    height: 36,
+  },
+  {
+    id: "17",
+    title: "Redis",
+    icon: redis,
+    width: 36,
+    height: 36,
+>>>>>>> b70f769 (added new Skills & Projects)
   }
 ];
 

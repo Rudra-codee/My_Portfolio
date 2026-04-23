@@ -2,12 +2,27 @@ import { useRef, useEffect, useState, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Section from "./Section";
 import { Button } from "./design/Button";
+<<<<<<< HEAD
 import robotImage from "../assets/hero/robot.jpeg";
 import backgroundImage from "../assets/background.jpeg";
+=======
+
+const heroImages = [
+  "/images/hero1.jpg", // collage 1 - kurta + dog + bike
+  "/images/hero2.jpg", // collage 2 - cafe + mirror + stairs
+  "/images/hero3.jpg", // collage 3 - event + mountains
+  "/images/hero4.jpg", // collage 4 - white kurta + gym + mirror
+];
+>>>>>>> b70f769 (added new Skills & Projects)
 
 const Hero = () => {
   const containerRef = useRef(null);
   const [isHovered, setIsHovered] = useState(false);
+<<<<<<< HEAD
+=======
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [isCarouselPaused, setIsCarouselPaused] = useState(false);
+>>>>>>> b70f769 (added new Skills & Projects)
   
   // Typing animation with optimized timing
   const roles = ["Frontend Developer", "UI/UX Designer", "Problem Solver"];
@@ -52,6 +67,21 @@ const Hero = () => {
     }
   };
 
+<<<<<<< HEAD
+=======
+  useEffect(() => {
+    if (isCarouselPaused || heroImages.length <= 1) {
+      return;
+    }
+
+    const carouselTimer = setInterval(() => {
+      setCurrentImageIndex((prev) => (prev + 1) % heroImages.length);
+    }, 3000);
+
+    return () => clearInterval(carouselTimer);
+  }, [isCarouselPaused]);
+
+>>>>>>> b70f769 (added new Skills & Projects)
   return (
     <Section
       className="min-h-screen bg-n-8 relative overflow-hidden"
@@ -195,7 +225,11 @@ const Hero = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
+<<<<<<< HEAD
           className="relative max-w-[1000px] mx-auto"
+=======
+          className="relative max-w-[760px] mx-auto"
+>>>>>>> b70f769 (added new Skills & Projects)
           onHoverStart={() => setIsHovered(true)}
           onHoverEnd={() => setIsHovered(false)}
         >
@@ -353,6 +387,7 @@ const Hero = () => {
                 </div>
                 
                 {/* Night Silhouette Image */}
+<<<<<<< HEAD
                 <div className="aspect-video relative group">
                   <motion.img
                     src={backgroundImage}
@@ -361,6 +396,25 @@ const Hero = () => {
                     whileHover={{ scale: 1.05 }}
                     transition={{ duration: 0.7 }}
                   />
+=======
+                <div
+                  className="aspect-[4/5] relative group"
+                  onMouseEnter={() => setIsCarouselPaused(true)}
+                  onMouseLeave={() => setIsCarouselPaused(false)}
+                >
+                  <AnimatePresence mode="wait">
+                    <motion.img
+                      key={heroImages[currentImageIndex]}
+                      src={heroImages[currentImageIndex]}
+                      alt={`Hero slide ${currentImageIndex + 1}`}
+                      className="w-full h-full object-contain absolute inset-0 bg-[#11141d]"
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      exit={{ opacity: 0 }}
+                      transition={{ duration: 0.8, ease: "easeInOut" }}
+                    />
+                  </AnimatePresence>
+>>>>>>> b70f769 (added new Skills & Projects)
                   {/* Image Glow Effects */}
                   <motion.div 
                     className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-blue-500/10 to-transparent pointer-events-none"
@@ -383,6 +437,22 @@ const Hero = () => {
                     }}
                     transition={{ duration: 0.3 }}
                   />
+<<<<<<< HEAD
+=======
+                  <div className="absolute bottom-4 left-1/2 z-10 flex -translate-x-1/2 items-center gap-2">
+                    {heroImages.map((image, index) => (
+                      <button
+                        key={image}
+                        type="button"
+                        onClick={() => setCurrentImageIndex(index)}
+                        className={`h-2.5 w-2.5 rounded-full transition-all duration-300 ${
+                          index === currentImageIndex ? "bg-white opacity-100" : "bg-white/50 opacity-70 hover:opacity-100"
+                        }`}
+                        aria-label={`Go to hero image ${index + 1}`}
+                      />
+                    ))}
+                  </div>
+>>>>>>> b70f769 (added new Skills & Projects)
                 </div>
               </div>
             </div>

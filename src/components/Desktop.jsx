@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
+import inkImg from '../assets/pro/ink-preview.png';
+import doxsyImg from '../assets/pro/doxsy-preview.png';
+import agenticRetentionImg from '../assets/pro/agentic-retention-preview.png';
+import busRouteImg from '../assets/pro/bus-route-preview.png';
+import proteinBoxImg from '../assets/pro/protein-box-preview.png';
 import striveImg from '../assets/pro/strive.jpeg';
-import teslaxImg from '../assets/pro/teslax.png';
-import skySnapImg from '../assets/pro/Skysnap.png';
-import spaceXImg from '../assets/pro/spacex.png';
 import fitoraImg from '../assets/pro/Fitora.png';
 import rishihoodImg from '../assets/pro/Rishihoodfest.png';
-// Using teslaxImg as a temporary placeholder for Rishihood
-// import rishihoodImg from '../assets/pro/rishihood.png';
 
 const Desktop = () => {
   const [activeProject, setActiveProject] = useState(null);
@@ -14,6 +14,51 @@ const Desktop = () => {
   const projects = [
     {
       id: 1,
+      name: "INK",
+      tech: "React, TypeScript, Node.js, MongoDB, TipTap, Tailwind CSS",
+      description: "A modern collaborative writing workspace. INK combines a rich document editor, real-time story rooms, favorites/trash workflows, theme customization, and AI writing assistance into one focused platform for individuals and teams.",
+      preview: inkImg,
+      github: "https://github.com/Rudra-codee/INK",
+      live: "https://ink-9699-mhzx1jizy-rudraksh969977-gmailcoms-projects.vercel.app/"
+    },
+    {
+      id: 2,
+      name: "Doxsy",
+      tech: "Next.js, NextAuth, MongoDB, Groq API, Tailwind CSS",
+      description: "AI-powered GitHub repository documentation platform. Doxsy generates structured, file-level technical documentation from any codebase in minutes — with a rich browsable UI and shareable public documentation links.",
+      preview: doxsyImg,
+      github: "https://github.com/Rudra-codee/Doxsy",
+      live: "https://doxsy-4jsu.vercel.app/"
+    },
+    {
+      id: 3,
+      name: "Agentic Customer Retention Assistant",
+      tech: "Python, Streamlit, Scikit-learn, RAG, LangChain, ML",
+      description: "A professional-grade hybrid AI system combining classic machine learning with Agentic RAG to predict customer churn and deliver autonomous, evidence-based retention strategies in real-time.",
+      preview: agenticRetentionImg,
+      github: "https://github.com/Rudra-codee/Customer-Churn-Prediction-ML",
+      live: "https://customer-churn-prediction-ml-123.streamlit.app/"
+    },
+    {
+      id: 4,
+      name: "Bus Route Optimization Platform",
+      tech: "Node.js, Express, TypeScript, PostgreSQL, TypeORM",
+      description: "A web-based platform for dynamically generating and monitoring school bus routes based on daily operational conditions — attendance, capacity, and traffic. Replaces static fixed schedules with rule-based dynamic routing.",
+      preview: proteinBoxImg,
+      github: "https://github.com/Rudra-codee/Dynamic-School-Bus-Route-Optimization-and-Monitoring-System",
+      live: null
+    },
+    {
+      id: 5,
+      name: "Protein Box",
+      tech: "React, Tailwind CSS, Node.js",
+      description: "High-protein, macro-tracked meal platform designed for gym-goers, students, and busy professionals. Meals built around real fitness goals — not just another healthy food brand.",
+      preview: busRouteImg,
+      github: "https://github.com/Rudra-codee/Redesign-Protein-Box",
+      live: "https://protein-box-trials.vercel.app/"
+    },
+    {
+      id: 6,
       name: "Rishihood Program Fest",
       tech: "React, Tailwind CSS, Framer Motion",
       description: "Official website for Rishihood University's annual program fest. Features event schedules, registration forms, and information about various college events including Neutron, Makers' Fest, Psyphoria, and Design X.",
@@ -22,7 +67,7 @@ const Desktop = () => {
       live: "https://www.rishihoodprogramfest.com/"
     },
     {
-      id: 2,
+      id: 7,
       name: "Strive - Habit Tracker",
       tech: "React, Tailwind CSS, Node.js",
       description: "A personalized habit tracker app to streamline everyday routines and achieve goals. Features include daily scheduling, productivity guides, and comprehensive habit management.",
@@ -31,34 +76,7 @@ const Desktop = () => {
       live: "https://strive-wine.vercel.app/"
     },
     {
-      id: 3,
-      name: "TeslaX Clone",
-      tech: "React, Tailwind CSS, Framer Motion",
-      description: "A pixel-perfect clone of Tesla's website featuring vehicle showcases, pricing information, and interactive elements. Includes responsive design and smooth animations.",
-      preview: teslaxImg,
-      github: "https://github.com/Rudra-codee/TeslaX",
-      live: "https://tesla-x-zeta.vercel.app/"
-    },
-    {
-      id: 4,
-      name: "SkySnap Weather",
-      tech: "React, Weather API, Tailwind CSS",
-      description: "Real-time weather application providing detailed weather information including temperature, humidity, pressure, and cloud coverage for any location.",
-      preview: skySnapImg,
-      github: "https://github.com/Rudra-codee/Weather",
-      live: "https://weather-six-inky.vercel.app/"
-    },
-    {
-      id: 5,
-      name: "SpaceX Clone",
-      tech: "React, Tailwind CSS, Animation",
-      description: "A detailed recreation of SpaceX's website showcasing launches, missions, and spacecraft. Features dynamic content and smooth transitions.",
-      preview: spaceXImg,
-      github: "https://github.com/Rudra-codee/SpaceX-Clone",
-      live: "https://space-x-clone-nu.vercel.app/"
-    },
-    {
-      id: 6,
+      id: 8,
       name: "Fitora Health Tracker",
       tech: "React, Node.js, Health APIs",
       description: "A comprehensive health tracking application for monitoring fitness goals, nutrition, and overall wellness. Includes personalized health insights.",
@@ -125,38 +143,51 @@ const Desktop = () => {
                   {activeProject ? (
                     <div className="space-y-4 lg:space-y-6">
                       <div className="aspect-video rounded-xl bg-[#2A2F42]/30 overflow-hidden">
-                        <img
-                          src={activeProject.preview}
-                          alt={activeProject.name}
-                          className="w-full h-full object-cover"
-                        />
+                        {activeProject.preview ? (
+                          <img
+                            src={activeProject.preview}
+                            alt={activeProject.name}
+                            className="w-full h-full object-cover"
+                          />
+                        ) : (
+                          <div className="w-full h-full flex flex-col items-center justify-center text-gray-500 bg-[#2A2F42]/30">
+                            <svg className="w-12 h-12 mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2 1.586-1.586a2 2 0 012.828 0L20 14m-6-8h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                            </svg>
+                            <p className="text-sm lg:text-base">Project screenshot coming soon</p>
+                          </div>
+                        )}
                       </div>
                       <div>
                         <h3 className="text-xl lg:text-2xl font-semibold text-white mb-2 lg:mb-3">{activeProject.name}</h3>
                         <p className="text-gray-400 text-sm lg:text-base mb-4 lg:mb-6 leading-relaxed">{activeProject.description}</p>
                         <div className="flex flex-col sm:flex-row gap-3">
-                          <a
-                            href={activeProject.live}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="flex-1 px-4 py-2 lg:px-6 lg:py-3 rounded-xl bg-blue-500/20 text-blue-400 hover:bg-blue-500/30 transition-colors duration-300 flex items-center justify-center space-x-2 text-sm lg:text-base"
-                          >
-                            <span>Visit Site</span>
-                            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                            </svg>
-                          </a>
-                          <a
-                            href={activeProject.github}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="flex-1 px-4 py-2 lg:px-6 lg:py-3 rounded-xl bg-[#2A2F42]/50 text-gray-300 hover:bg-[#2A2F42]/70 transition-colors duration-300 flex items-center justify-center space-x-2 text-sm lg:text-base"
-                          >
-                            <span>View Code</span>
-                            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
-                            </svg>
-                          </a>
+                          {activeProject.live && (
+                            <a
+                              href={activeProject.live}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="flex-1 px-4 py-2 lg:px-6 lg:py-3 rounded-xl bg-blue-500/20 text-blue-400 hover:bg-blue-500/30 transition-colors duration-300 flex items-center justify-center space-x-2 text-sm lg:text-base"
+                            >
+                              <span>Visit Site</span>
+                              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                              </svg>
+                            </a>
+                          )}
+                          {activeProject.github && (
+                            <a
+                              href={activeProject.github}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="flex-1 px-4 py-2 lg:px-6 lg:py-3 rounded-xl bg-[#2A2F42]/50 text-gray-300 hover:bg-[#2A2F42]/70 transition-colors duration-300 flex items-center justify-center space-x-2 text-sm lg:text-base"
+                            >
+                              <span>View Code</span>
+                              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+                              </svg>
+                            </a>
+                          )}
                         </div>
                       </div>
                     </div>

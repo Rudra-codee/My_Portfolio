@@ -1,5 +1,9 @@
 import { useState, useEffect, useRef } from 'react';
 import { github } from "../assets";
+<<<<<<< HEAD
+=======
+import { chatWithAssistant } from '../lib/groq';
+>>>>>>> b70f769 (added new Skills & Projects)
 
 const ChatBot = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -16,10 +20,17 @@ const ChatBot = () => {
   const inputRef = useRef(null);
 
   const suggestions = [
+<<<<<<< HEAD
     "Tell me about Rudraksh's skills",
     "What projects has he worked on?",
     "How can I contact him?",
     "What's his educational background?"
+=======
+    "What makes Rudraksh stand out?",
+    "Show me his AI projects",
+    "Is he available for internships?",
+    "What's his strongest tech stack?"
+>>>>>>> b70f769 (added new Skills & Projects)
   ];
 
   const scrollToBottom = () => {
@@ -36,6 +47,7 @@ const ChatBot = () => {
     }
   }, [isOpen]);
 
+<<<<<<< HEAD
   const getAIResponse = async (message) => {
     try {
       if (!import.meta.env.VITE_OPENAI_API_KEY) {
@@ -87,6 +99,30 @@ const ChatBot = () => {
         return "I'm receiving too many requests right now. Please try again in a moment.";
       }
       return "I apologize, but I'm having trouble processing your request. You can ask me specific questions about Rudraksh's education, skills, or projects instead.";
+=======
+  const getAIResponse = async (conversationHistory) => {
+    try {
+      if (!import.meta.env.VITE_GROQ_API_KEY) {
+        console.error('Groq API key is not configured');
+        return "I'm ready to help with Rudraksh's portfolio, but the assistant API key is not configured yet.";
+      }
+
+      const reply = await chatWithAssistant(
+        conversationHistory.map((msg) => ({
+          role: msg.type === 'user' ? 'user' : 'assistant',
+          content: msg.content,
+        }))
+      );
+
+      if (!reply) {
+        throw new Error('Invalid response format');
+      }
+
+      return reply;
+    } catch (error) {
+      console.error('Error fetching AI response:', error);
+      return "I can help with Rudraksh's background, projects, and strengths, but the assistant hit a temporary issue. Please try again in a moment.";
+>>>>>>> b70f769 (added new Skills & Projects)
     }
   };
 
@@ -101,16 +137,29 @@ const ChatBot = () => {
     setInputMessage('');
     setIsLoading(true);
 
+<<<<<<< HEAD
     const botResponse = await getBotResponse(messageToSend, newMessages);
     
     setMessages([...newMessages, {
       type: 'bot',
       content: botResponse
     }]);
+=======
+    const botResponse = await getAIResponse(newMessages);
+
+    setMessages([
+      ...newMessages,
+      {
+        type: 'bot',
+        content: botResponse,
+      },
+    ]);
+>>>>>>> b70f769 (added new Skills & Projects)
     setIsLoading(false);
     setShowSuggestions(true);
   };
 
+<<<<<<< HEAD
   const getBotResponse = async (message, currentMessages) => {
     const lowerMessage = message.toLowerCase();
 
@@ -151,6 +200,8 @@ const ChatBot = () => {
     return await getAIResponse(message);
   };
 
+=======
+>>>>>>> b70f769 (added new Skills & Projects)
   return (
     <div className="fixed bottom-5 right-5 z-[9999]">
       {!isOpen ? (
@@ -218,7 +269,15 @@ const ChatBot = () => {
             ))}
             {isLoading && (
               <div className="flex justify-start animate-slideIn">
+<<<<<<< HEAD
                 <div className="max-w-[80%] p-4 rounded-2xl bg-n-6 text-n-1">
+=======
+                <div className="max-w-[80%] p-4 rounded-2xl bg-n-6 text-n-1 shadow-lg">
+                  <div className="flex items-center space-x-2 mb-2">
+                    <div className="w-2 h-2 rounded-full bg-color-1" />
+                    <span className="text-xs text-n-3">Rudra's Assistant</span>
+                  </div>
+>>>>>>> b70f769 (added new Skills & Projects)
                   <div className="flex items-center space-x-2">
                     <div className="w-2 h-2 bg-n-1 rounded-full animate-bounce" style={{ animationDelay: '0ms' }} />
                     <div className="w-2 h-2 bg-n-1 rounded-full animate-bounce" style={{ animationDelay: '150ms' }} />

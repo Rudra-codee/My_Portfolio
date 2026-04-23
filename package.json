@@ -16,6 +16,10 @@
     "@splinetool/react-spline": "^4.0.0",
     "@splinetool/runtime": "^1.9.82",
     "framer-motion": "^12.7.4",
+<<<<<<< HEAD
+=======
+    "groq-sdk": "^1.1.2",
+>>>>>>> b70f769 (added new Skills & Projects)
     "next": "^15.3.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",

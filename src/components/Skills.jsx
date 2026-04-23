@@ -11,6 +11,19 @@ import skill9 from '../assets/skill9.svg';
 import skill10 from '../assets/skill10.svg';
 import skill11 from '../assets/skill11.png';
 import skill12 from '../assets/skill12.png';
+<<<<<<< HEAD
+=======
+import nextjs from '../assets/nextjs.svg';
+import nodejs from '../assets/nodejs.svg';
+import expressjs from '../assets/expressjs.svg';
+import mongodb from '../assets/mongodb.svg';
+import postgresql from '../assets/postgresql.svg';
+import prisma from '../assets/prisma.svg';
+import redis from '../assets/redis.svg';
+import llmApis from '../assets/llm-apis.svg';
+import ragPgvector from '../assets/rag-pgvector.svg';
+import astParsing from '../assets/ast-parsing.svg';
+>>>>>>> b70f769 (added new Skills & Projects)
 
 const Skills = () => {
   const [activeSkill, setActiveSkill] = useState(null);
@@ -137,6 +150,79 @@ const Skills = () => {
       category: 'Design',
       description: 'Data manipulation and analysis library'
     },
+<<<<<<< HEAD
+=======
+    {
+      id: 13,
+      image: nextjs,
+      name: 'Next.js',
+      category: 'Frontend',
+      description: 'React framework for production-grade applications with routing and SSR support'
+    },
+    {
+      id: 14,
+      image: nodejs,
+      name: 'Node.js',
+      category: 'Programming',
+      description: 'JavaScript runtime for building scalable backend services and tooling'
+    },
+    {
+      id: 15,
+      image: expressjs,
+      name: 'Express.js',
+      category: 'Programming',
+      description: 'Minimal web framework for creating APIs and server-side applications'
+    },
+    {
+      id: 16,
+      image: mongodb,
+      name: 'MongoDB',
+      category: 'Database',
+      description: 'Document database designed for flexible schemas and fast application development'
+    },
+    {
+      id: 17,
+      image: postgresql,
+      name: 'PostgreSQL',
+      category: 'Database',
+      description: 'Relational database known for reliability, SQL features, and strong extensibility'
+    },
+    {
+      id: 18,
+      image: prisma,
+      name: 'Prisma',
+      category: 'Database',
+      description: 'Modern ORM and database toolkit for type-safe data access workflows'
+    },
+    {
+      id: 19,
+      image: redis,
+      name: 'Redis',
+      category: 'Programming',
+      description: 'In-memory data store commonly used for caching, queues, and fast state management'
+    },
+    {
+      id: 20,
+      image: llmApis,
+      name: 'LLM APIs',
+      category: 'AI/ML',
+      description: 'Model integration layer for prompt orchestration, inference, and AI-powered features'
+    },
+    {
+      id: 21,
+      image: ragPgvector,
+      name: 'RAG / pgvector',
+      category: 'AI/ML',
+      description: 'Retrieval pipeline patterns for semantic search and grounded AI responses'
+    },
+    {
+      id: 22,
+      image: astParsing,
+      name: 'AST Parsing',
+      category: 'AI/ML',
+      description: 'Structured code analysis techniques for syntax-aware transformations and tooling'
+    },
+>>>>>>> b70f769 (added new Skills & Projects)
   ];
 
   // Get unique categories
